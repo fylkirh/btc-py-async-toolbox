@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='btc-py-async-toolbox',
-    version='0.0.3',
+    version='0.1.0',
     packages=['btc'],
     license='MIT',
     author='mtwaro',
