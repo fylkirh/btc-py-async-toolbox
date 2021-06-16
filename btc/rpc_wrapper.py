@@ -38,8 +38,8 @@ class RPCHandler:
         self.session = None
 
     def __del__(self):
-        if self.session:
-            self.loop.run_until_complete(self.session.close())
+        if not self.session.closed:
+            asyncio.create_task(self.session.close())
 
     def is_connected(self) -> bool:
         self.loop.run_until_complete(self._test_connection())
