@@ -8,6 +8,6 @@ setup(
     author='mtwaro',
     author_email='f20f1a85b3@protonmail.com',
     description='Python toolbox for asynchronous interaction with btc-like nodes.',
-    install_requires=['aiohttp', 'pyzmq'],
+    install_requires=['aiohttp', 'pyzmq', 'wheel'],
     long_description=open('README.md').read(),
 )
