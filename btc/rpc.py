@@ -5,7 +5,9 @@ import aiohttp
 
 
 class RPC:
-    def __init__(self, method: str, params: list = []):
+    def __init__(self, method: str, params=None):
+        if params is None:
+            params = []
         self.method = method
         self.params = params
         self.jsonrpc = "2.0"

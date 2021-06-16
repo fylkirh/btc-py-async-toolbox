@@ -19,7 +19,8 @@ def process_rpc_response(response: Dict, return_error: bool) -> Optional[Union[s
         return response['result']
 
 
-def process_rpc_response_batch(response: List[Dict], return_error: bool) -> Union[List[str], List[Dict], List[Tuple[Dict, Dict]]]:
+def process_rpc_response_batch(response: List[Dict], return_error: bool) -> Union[List[str], List[Dict],
+                                                                                  List[Tuple[Dict, Dict]]]:
     if not response:
         return []
     if return_error:
@@ -41,7 +42,7 @@ class RPCHandler:
             self.loop.run_until_complete(self.session.close())
 
     def is_connected(self) -> bool:
-        self.loop.create_task(self._test_connection())
+        self.loop.run_until_complete(self._test_connection())
         return self.connected
 
     async def _init_session(self):
@@ -49,6 +50,7 @@ class RPCHandler:
             self.session = aiohttp.ClientSession(loop=self.loop)
 
     async def _test_connection(self):
+        await self._init_session()
         test_rpc = RPC("getbalance")
         try:
             await test_rpc.execute(self.url, self.session)
