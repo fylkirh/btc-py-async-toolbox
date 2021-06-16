@@ -41,6 +41,9 @@ class GetBlockParser(BaseParser):
     def get_transaction_ids(self) -> list:
         return [tx['txid'] for tx in self.json['tx']]
 
+    def get_time(self) -> int:
+        return int(self.json["time"])
+
 
 class ListUnspentParser(BaseParser):
 
