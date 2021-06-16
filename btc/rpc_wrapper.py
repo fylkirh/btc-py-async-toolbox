@@ -4,8 +4,8 @@ from typing import Optional, Tuple, List, Union, Dict
 
 import aiohttp
 
-from ..btc.rpc import RPC, RPCBatch
-from ..btc.utils import make_url, split_into_chunks, flatten, crop_utxo_to_input_format
+from rpc import RPC, RPCBatch
+from utils import make_url, split_into_chunks, flatten, crop_utxo_to_input_format
 
 CHUNK_SIZE = 100
 

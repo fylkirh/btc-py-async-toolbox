@@ -6,7 +6,7 @@ from typing import Callable, Awaitable, Any
 import zmq
 import zmq.asyncio
 
-from ..btc.utils import make_url
+from utils import make_url
 
 
 class ZMQHandler:
