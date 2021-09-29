@@ -36,6 +36,7 @@ class RPCHandler:
         self.loop = asyncio.get_event_loop()
         self.connected = False
         self.session = None
+        self.timeout = aiohttp.ClientTimeout(total=3600)
 
     def __del__(self):
         if not self.session.closed:
@@ -47,7 +48,7 @@ class RPCHandler:
 
     async def _init_session(self):
         if not self.session:
-            self.session = aiohttp.ClientSession(loop=self.loop)
+            self.session = aiohttp.ClientSession(loop=self.loop, timeout=self.timeout)
 
     async def _test_connection(self):
         await self._init_session()
