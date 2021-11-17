@@ -130,12 +130,12 @@ class RPCHandler:
         resp = await self._execute_rpc_batch(method_list)
         return process_rpc_response_batch(resp, return_error)
 
-    async def get_received_by_address(self, address: str, return_error: bool = False):
-        resp = await self._execute_rpc_single("getreceivedbyaddress", [address])
+    async def get_received_by_address(self, address: str, minconf: int = 0, return_error: bool = False):
+        resp = await self._execute_rpc_single("getreceivedbyaddress", [address, minconf])
         return process_rpc_response(resp, return_error)
 
-    async def get_received_by_address_batch(self, address_list: List[str], return_error: bool = False):
-        method_list = [("getreceivedbyaddress", [address]) for address in address_list]
+    async def get_received_by_address_batch(self, address_list: List[str], minconf: int = 0, return_error: bool = False):
+        method_list = [("getreceivedbyaddress", [address, minconf]) for address in address_list]
         resp = await self._execute_rpc_batch(method_list)
         return process_rpc_response_batch(resp, return_error)
 
